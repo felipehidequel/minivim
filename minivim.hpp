@@ -1,21 +1,24 @@
 #pragma once
+#pragma clang diagnostic ignored "-Wformat-security"
 
-#include <ncurses.h>
 #include <memory>
+#include <ncurses.h>
+#include <string>
+#include <vector>
 
-class minivim
-{
-private:
-    /* data */
+class Minivim {
+
+  int x, y;
+  char mode;
+  std::string filename, status;
+  std::vector<std::string> lines;
+
 public:
-    minivim(/* args */);
-    ~minivim();
+  Minivim(const std::string &);
+  ~Minivim();
+  void run();
+
+protected:
+  void update();
+  void statusline();
 };
-
-minivim::minivim(/* args */)
-{
-}
-
-minivim::~minivim()
-{
-}
